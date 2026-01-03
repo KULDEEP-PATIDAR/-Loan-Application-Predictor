@@ -3,61 +3,72 @@
 
 📌 Project Overview
 
-The Loan Application Predictor is an end-to-end Machine Learning project that predicts whether a loan application will be approved or rejected based on applicant demographic and financial details.
-The project follows the complete Machine Learning Development Life Cycle (MLDLC) from data understanding to model saving and deployment readiness.
+The Loan Application Predictor project focuses on building a machine learning–based loan approval prediction system to identify whether a loan applicant is high-risk or low-risk. Multiple supervised classification algorithms are implemented and evaluated to improve decision-making efficiency for financial institutions.
 
-🎯 Objective
+The project emphasizes data preprocessing, handling class imbalance, feature encoding, model training, and performance evaluation.
 
-To build a reliable classification model that helps financial institutions:
-Reduce manual loan approval effort.
-Minimize risk by identifying eligible applicants.
-Improve decision-making using data-driven insights.
 
 📌 Tech Stack
 
-Python,
-Pandas, NumPy,
-Scikit-learn,
-XGBoost,
-Matplotlib, Seaborn,
-Joblib.
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Matplotlib
+- Seaborn
 
-📊 Dataset
 
-Source: Dphi Official Dataset.
-Features: 13 variables including demographic, income, loan, and credit history details.
-Target Variable: Loan_Status (0 = Rejected, 1 = Approved).
+📊 Dataset Description
 
-🔍 Exploratory Data Analysis (EDA)
+- Total records: 252,000
+- Total features: 13
+- Target variable: Risk_Flag
+- 0 → Low risk
+- 1 → High risk
+- Features
+  - Id – Unique identifier
+  - Income – Applicant income
+  - Age – Applicant age
+  - Experience – Professional experience
+  - Married/Single – Marital status
+  - House_Ownership – Owns a house or not
+  - Car_Ownership – Owns a car or not
+  - Profession – Applicant profession
+  - CITY – City of residence
+  - STATE – State of residence
+  - CURRENT_JOB_YRS – Years in current job
+  - CURRENT_HOUSE_YRS – Years at current residence
+  - Risk_Flag – Loan risk indicator
 
-Analyzed data distribution, missing values, and feature types.
-Studied class balance of loan approval vs rejection.
-Identified Credit_History, ApplicantIncome, and LoanAmount as strong predictors.
-Visualized relationships using bar plots, histograms, and box plots.
+⚙️ Data Preprocessing & Feature Engineering
 
-🛠 Data Preprocessing
+- Label Encoding
+  - Applied to Married/Single and Car_Ownership
+- One-Hot Encoding
+  - Applied to House_Ownership
+- High Cardinality Encoding
+  - Count Encoding used for Profession, CITY, and STATE
+- Class Imbalance Handling
+  - Severe imbalance addressed using Random UnderSampling
 
-Removed irrelevant columns.
-Handled missing values using statistical imputation.
-Converted categorical variables into numerical form.
-Treated outliers where necessary.
+ 📌 All models are treated as binary classification problems.
 
-Models Trained & Evaluated
+- Logistic Regression
+- Gaussian Naive Bayes
+- Decision Tree Classifier
+- Random Forest Classifier
 
-<img width="479" height="192" alt="image" src="https://github.com/user-attachments/assets/ce588d48-2687-4a3b-95ec-d3714f1fce1b" />
+Each model was trained, tuned, and evaluated under both original and undersampled datasets.
 
- 📌 Final Model Selected: Logistic Regression
+📈 Model Performance Summary
 
-Highest F1-Score.
-Best overall balance between precision and recall.
+<img width="902" height="386" alt="image" src="https://github.com/user-attachments/assets/0326ad87-876e-4d04-b771-6ad208564740" />
 
-🧩 Pipeline & Best Practices
+⚠️ Key Challenges
 
-Implemented Scikit-learn Pipeline with ColumnTransformer.
-Combined preprocessing and model into one single object.
+- Highly imbalanced dataset
+- High dimensional categorical features
+- Long training time for tree-based models
+- Low recall for minority class (high-risk applicants)
 
-💾 Model Saving
-
-Final trained pipeline saved using joblib.
-Ready for deployment without retraining.
 
